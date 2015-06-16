@@ -1,0 +1,17 @@
+default_settings:
+    command: >
+        python ~/control/scripts/algs/run_spi.py --mdp_name mjc2:3d_humanoid --path_length 1000 --agent_module control4.agents.nn_reactive_agent --paths_per_batch 500 --policy_iter 400 --pol_cg_damping 0.1 --par_mode multiprocessing --policy_kws=clip_features=1,clip_value=5.0 --policy_cfg=throwaway/json/nn-for-3dhuman.pol.json
+
+scripts:
+
+    lin_cost_0.1:
+        mdp_kws: lin_vel_cost_coeff=0.1,alive_bonus_coeff=50.0,quad_ctrl_cost_coeff=1e-3
+
+    lin_cost_0.5:
+        mdp_kws: lin_vel_cost_coeff=0.5,alive_bonus_coeff=50.0,quad_ctrl_cost_coeff=1e-3
+
+    lin_cost_1.0:
+        mdp_kws: lin_vel_cost_coeff=1.0,alive_bonus_coeff=50.0,quad_ctrl_cost_coeff=1e-3
+
+    lin_cost_2.0:
+        mdp_kws: lin_vel_cost_coeff=2.0,alive_bonus_coeff=50.0,quad_ctrl_cost_coeff=1e-3

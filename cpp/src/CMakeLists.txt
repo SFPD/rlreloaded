@@ -1,0 +1,12 @@
+if (DEVEL_MODE)
+  set(CMAKE_CXX_FLAGS "-Wall -Wno-sign-compare -Wextra")
+endif(DEVEL_MODE)
+
+include_directories(${CMAKE_CURRENT_SOURCE_DIR})
+add_subdirectory(mjcpy)
+add_subdirectory(alepy)
+add_subdirectory(atariemu)
+add_subdirectory(cython)
+if(HAVE_MJC2)
+	add_subdirectory(mjcpy2)
+endif (HAVE_MJC2)

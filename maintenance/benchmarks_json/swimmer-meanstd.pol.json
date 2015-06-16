@@ -1,0 +1,4 @@
+{
+	"nonlinearity" : "soft_rect",
+	"hidden_layer_sizes" : [30]
+}

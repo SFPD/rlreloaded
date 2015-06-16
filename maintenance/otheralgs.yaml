@@ -1,0 +1,45 @@
+default_settings:
+    save_data_snapshots: 0
+    save_policy_snapshots: 0
+    test_name: $script_name
+    par_mode: multiprocessing
+
+definitions:
+
+
+scripts:
+
+    cartpole-linear-cem: &cartpole-linear-cem
+        command: python $CTRL_ROOT/scripts/algs/run_blackbox.py --mdp_name=cartpole_barto
+        policy_iter: 20
+        path_length: 1000
+        paths_per_batch: 100
+        agent_module: control4.agents.nn_reactive_agent
+        alg: cem
+        policy_cfg: maintenance/benchmarks_json/cartpole-linear.pol.json
+
+    cartpole-linear-cma:
+        <<: *cartpole-linear-cem
+        alg: cma
+
+    cartpole-linear-rwr:
+        command: python $CTRL_ROOT/scripts/algs/run_rwr.py --mdp_name=cartpole_barto
+        policy_iter: 20
+        path_length: 1000
+        paths_per_batch: 100
+        agent_module: control4.agents.nn_reactive_agent
+        alg: rwr
+        policy_cfg: maintenance/benchmarks_json/cartpole-linear.pol.json
+
+    cartpole-linear-vine:
+        command: python $CTRL_ROOT/scripts/algs/run_vines.py --mdp_name=cartpole_barto
+        vine_length: 2000
+        num_vines: 32
+        branch_length: 80
+        all_actions: 0
+        rollout_set_size: 500
+        action_samples: 4
+        trials_per_action: 1
+        vine_is_method: self_normalized
+        agent_module: control4.agents.nn_reactive_agent
+        policy_cfg: maintenance/benchmarks_json/cartpole-linear.pol.json

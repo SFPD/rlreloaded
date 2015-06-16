@@ -1,0 +1,5 @@
+{
+	"normalize" : false,
+	"input_reses" : [5,5,11,11],
+	"output_reses" : [3]
+}

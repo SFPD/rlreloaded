@@ -1,0 +1,62 @@
+default_settings:
+    command: python $CTRL_ROOT/scripts/algs/run_spi.py
+    mdp_name: atari:breakout
+    policy_iter: 100
+    path_length: 9999
+    timesteps_per_batch: 50000
+    agent_module: control4.agents.ram_atari_agent 
+    standardize_adv: 1
+    par_mode: multiprocessing
+
+
+scripts:
+
+    novf_gam0.98:
+        gamma: 0.98
+
+    yesvf_1.0-0.95:
+        vf_opt_mode: separate
+        vf_cg_kl: 0.1
+        gamma: 1.0
+        lam: 0.95
+
+    yesvf_0.98-0.95:
+        vf_opt_mode: separate
+        vf_cg_kl: 0.1
+        gamma: 0.98
+        lam: 0.95
+
+    yesvf_0.98-1.0:
+        vf_opt_mode: separate
+        vf_cg_kl: 0.1
+        gamma: 0.98
+        lam: 1.0
+
+    yesvf_1.0-0.95:
+        vf_opt_mode: separate
+        vf_cg_kl: 0.1
+        gamma: 1.0
+        lam: 0.95
+        fancy_damping: 1
+        pol_cg_damping: 1e-2
+        vf_cg_damping: 1e-2
+
+
+    cheat_0.98:
+        deepmind_cheat: 1
+        gamma: 0.98
+
+    # cheat-yesvf_1.0-0.95:
+    #     deepmind_cheat: 1
+    #     vf_opt_mode: separate
+    #     vf_cg_kl: 0.1
+    #     gamma: 1.0
+    #     lam: 0.95
+
+    # cheat-yesvf_0.98-0.95:
+    #     deepmind_cheat: 1
+    #     vf_opt_mode: separate
+    #     vf_cg_kl: 0.1
+    #     gamma: 0.98
+    #     lam: 0.95
+

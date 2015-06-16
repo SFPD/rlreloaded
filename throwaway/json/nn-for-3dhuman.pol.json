@@ -1,0 +1,4 @@
+{
+	"nonlinearity" : "hard_rect",
+	"hidden_layer_sizes" : [50,50]
+}

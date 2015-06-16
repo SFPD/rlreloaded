@@ -1,0 +1,38 @@
+default_settings:
+    command: python $CTRL_ROOT/scripts/algs/run_spi.py
+    mdp_name: mjc2:3d_humanoid
+    mdp_kws: alive_bonus_coeff=1.0,quad_ctrl_cost_coeff=1e-4,lin_vel_cost_coeff=1.0,quad_impact_cost_coeff=1e-5,clip_impact_cost=0.5,contact_compliance=0.001,contact_timeconst=0.001,contact_friction=1.5,quad_ctrl_cost="[10.0;10.0;10.0;0.6;0.15;0.06;0.125;0.3;0.3;0.6;0.15;0.06;0.125;0.3;0.3;10.0;10.0;10.0;10.0;10.0;10.0]"
+    path_length: 500
+    agent_module: control4.agents.nn_reactive_agent
+    timesteps_per_batch: 400000
+    policy_iter: 500
+    pol_cg_damping: 1.0
+    par_mode: multiprocessing
+    policy_kws: clip_features=1,clip_value=5.0
+    policy_cfg: throwaway/json/nn-for-3dhuman.pol.json
+    vf_cfg: throwaway/json/nn-for-3dhuman.pol.json
+    vf_cg_kl: 0.1
+
+scripts:
+
+    lam0.95boot: &lam095boot
+        vf_opt_mode: separate
+        policy_cfg: throwaway/json/nn-for-3dhuman.pol.json
+        gamma: 1.0
+        lam: 0.95
+        vf_end_mode: bootstrap
+
+    lam0.95zero: &lam095zero
+        vf_opt_mode: separate
+        policy_cfg: throwaway/json/nn-for-3dhuman.pol.json
+        gamma: 1.0
+        lam: 0.95
+        vf_end_mode: zero
+
+    lam0.95vf0.95boot:
+        <<: *lam095boot
+        vf_lam: 0.95
+
+    lam0.95vf0.95zero:
+        <<: *lam095zero
+        vf_lam: 0.95

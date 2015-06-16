@@ -1,0 +1,28 @@
+version: 1
+disable_existing_loggers: False
+formatters:
+    simple:
+        format: "%(name)s:%(levelname)s:%(asctime)s:%(msecs)d %(message)s"
+        datefmt: "%H:%M:%S"
+handlers:
+    console:
+        class: logging.StreamHandler
+        level: INFO
+        formatter: simple
+        stream: ext://sys.stdout
+
+loggers:
+    adaptive_descent:
+        level: INFO
+    lbfgs:
+        level: WARN
+    optimize_policy:
+        level: WARN
+    cluster:
+        level: WARN
+
+root:
+    # level: WARN
+    handlers: [console]
+    # propagate: no
+# 

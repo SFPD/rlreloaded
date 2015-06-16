@@ -1,0 +1,22 @@
+default_settings:
+    command: python $CTRL_ROOT/throwaway/atari_arch_search2.py
+    obs_mode: ram
+    datafile: gs://rlreloaded_data/datasets/ram/pong1.h5
+    n_traj: 20
+    n_iter: 100
+    opt_method: cg_with_rescaling
+    policy_cfg: throwaway/atariramnets/default.pol.json
+
+scripts:
+    nono:
+        normalize: 0
+        renormalize: 0
+    yesno:
+        normalize: 1
+        renormalize: 0
+    noyes:
+        normalize: 0
+        renormalize: 1
+    yesyes:
+        normalize: 1
+        renormalize: 1

@@ -1,0 +1,80 @@
+default_settings:
+    command: >
+        python $CTRL_ROOT/scripts/algs/run_spi.py --mdp_name=atari:breakout
+        --policy_iter=100 --path_length=9999 --timesteps_per_batch=50000
+        --agent_module=control4.agents.ram_atari_agent 
+        --standardize_adv=1 --par_mode=multiprocessing
+
+
+scripts:
+
+    # no_0.98:
+    #     gamma: 0.98
+
+    cheat_0.98:
+        deepmind_cheat: 1
+        gamma: 0.98
+
+    # # no_0.98_1_0:
+    # #     gamma: 0.98
+    # #     policy_kws: "col_norm=1.0,final_col_norm=0.0"
+    # # no_0.98_0.1_0.1:
+    # #     gamma: 0.98
+    # #     policy_kws: "col_norm=0.1,final_col_norm=0.1"
+    # # no_0.98_0.01_0.01:
+    # #     gamma: 0.98
+    # #     policy_kws: "col_norm=0.01,final_col_norm=0.01"
+    # # no_0.98_0.25_0.25:
+    # #     gamma: 0.98
+    # #     policy_kws: "col_norm=0.25,final_col_norm=0.25"                        
+
+    # cheat_0.98_2x:
+    #     deepmind_cheat: 1
+    #     gamma: 0.98
+    #     timesteps_per_batch: 100000
+    # cheat_0.98_4x:
+    #     deepmind_cheat: 1
+    #     gamma: 0.98
+    #     timesteps_per_batch: 200000
+
+    # cheat_0.98_fancy1:
+    #     deepmind_cheat: 1
+    #     gamma: 0.98
+    #     fancy_damping: 1
+    #     pol_cg_damping: 1.0
+
+    # cheat_0.98_fancy0.1:
+    #     deepmind_cheat: 1
+    #     gamma: 0.98
+    #     fancy_damping: 1
+    #     pol_cg_damping: 0.1
+
+    # cheat_0.98_fancy_damp0.01_cn0.1:
+    #     deepmind_cheat: 1
+    #     gamma: 0.98
+    #     fancy_damping: 1
+    #     pol_cg_damping: 0.01
+    #     policy_kws: "col_norm=0.1,final_col_norm=0.1"
+    # cheat_0.98_fancy_damp0.01_cn0.2:
+    #     deepmind_cheat: 1
+    #     gamma: 0.98
+    #     fancy_damping: 1
+    #     pol_cg_damping: 0.01
+    #     policy_kws: "col_norm=0.2,final_col_norm=0.2"
+
+
+    cheat_0.98_fancy_damp0.01:
+        deepmind_cheat: 1
+        gamma: 0.98
+        fancy_damping: 1
+        pol_cg_damping: 0.01
+    # cheat_0.98_fancy_damp0.001:
+    #     deepmind_cheat: 1
+    #     gamma: 0.98
+    #     fancy_damping: 1
+    #     pol_cg_damping: 0.001
+    # cheat_0.98_fancy_damp0.0001:
+    #     deepmind_cheat: 1
+    #     gamma: 0.98
+    #     fancy_damping: 1
+    #     pol_cg_damping: 0.0001        

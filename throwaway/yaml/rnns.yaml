@@ -1,0 +1,47 @@
+default_settings:
+    command: python $CTRL_ROOT/throwaway/test_rnns.py
+
+definitions: ""
+
+tests:
+    multiplication:
+        task: multiplication
+    addition:
+        task: addition
+    substitution:
+        task: substitution
+    temp_order:
+        task: temp_order
+
+
+cfgs:
+    a_rmsprop:
+        opt_method: adaptive_rmsprop
+    a_sgd:
+        opt_method: adaptive_sgd
+    cg:
+        opt_method: cg        
+    cgtrunc10:
+        opt_method: cg        
+        truncate_gradient: 10.0
+    cgtrunc100:
+        opt_method: cg        
+        truncate_gradient: 100.0
+    lbfgs:
+        opt_method: lbfgs
+    mem_times2:
+        mem_size: 40
+    mem_div2:
+        mem_size: 10
+    batch_times2:
+        batch_size: 100
+    batch_div2:
+        batch_size: 25
+    tanhcell:
+        cell_type: tanh
+    init_reset_off:
+        init_reset_off: 1
+
+
+
+

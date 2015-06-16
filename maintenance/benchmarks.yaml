@@ -1,0 +1,51 @@
+default_settings:
+    save_data_snapshots: 0
+    save_policy_snapshots: 0
+    test_name: $script_name
+    par_mode: multiprocessing
+
+scripts:
+    pendulum-grid:
+        command: >
+            python $CTRL_ROOT/scripts/algs/run_spi.py --mdp_name=pendulum
+            --policy_iter=20 --path_length=500 --paths_per_batch=40
+            --policy_cfg=maintenance/benchmarks_json/pendulum-grid.pol.json
+            --agent_module=control4.agents.rbf_discrete_agent
+
+    cartpole-grid:
+        command: >
+            python $CTRL_ROOT/scripts/algs/run_spi.py --mdp_name=cartpole_barto
+            --policy_iter=20 --path_length=1000 --timesteps_per_batch=20000
+            --pol_cg_damping=1e-5 --pol_l2_coeff=1e-5
+            --policy_cfg=maintenance/benchmarks_json/cartpole-grid.pol.json
+            --agent_module=control4.agents.rbf_discrete_agent
+
+    cartpole-linear:
+        command: >
+            python $CTRL_ROOT/scripts/algs/run_spi.py --mdp_name=cartpole_barto
+            --policy_iter=20 --path_length=1000 --timesteps_per_batch=20000
+            --pol_cg_damping=1e-5 --pol_l2_coeff=1e-5
+            --policy_cfg=maintenance/benchmarks_json/cartpole-linear.pol.json
+            --agent_module=control4.agents.nn_reactive_agent
+
+    breakout-ram:
+        command: >
+            python $CTRL_ROOT/scripts/algs/run_spi.py --mdp_name=atari:breakout
+            --policy_iter=20 --path_length=9999 --timesteps_per_batch=50000
+            --agent_module=control4.agents.ram_atari_agent 
+            --standardize_adv=1 --deepmind_cheat=0
+            --gamma=1.0 --vf_opt_mode=separate --vf_cg_kl=0.1 --lam=0.95
+
+    swimmer-meanstd:
+        command: >
+            python $CTRL_ROOT/scripts/algs/run_spi.py --mdp_name=mjc:3swimmer
+            --policy_iter=50 --path_length=500 --paths_per_batch=400
+            --policy_cfg=maintenance/benchmarks_json/swimmer-meanstd.pol.json
+            --agent_module=control4.agents.nn_reactive_agent
+
+    nav-rnn:
+        command: > 
+            python $CTRL_ROOT/scripts/algs/run_spi.py --mdp_name=nav2d 
+            --policy_iter=100 --path_length=999 --timesteps_per_batch=10000 
+            --gamma=1 --standardize_adv=1 --pol_hess_subsample=10        
+            --agent_module=control4.agents.nav_rnn_agent 

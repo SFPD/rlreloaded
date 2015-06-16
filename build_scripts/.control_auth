@@ -1,0 +1,5 @@
+{
+    "gmail_user": "adp4control.notifier",
+    "gmail_password": PASSWORD_HERE_IN_QUOTES,
+    "notify_email": YOUR_EMAIL_HERE_IN_QUOTES
+}

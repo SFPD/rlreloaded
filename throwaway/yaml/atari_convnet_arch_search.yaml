@@ -1,0 +1,57 @@
+default_settings:
+    command: THEANO_FLAGS=openmp=True python $CTRL_ROOT/throwaway/atari_arch_search2.py
+    obs_mode: image
+    datafile: gs://rlreloaded_data/datasets/ram/pong1.h5
+    n_traj: 10
+    n_iter: 100
+    opt_method: cg
+
+scripts:
+    default:
+        policy_cfg: $CTRL_ROOT/throwaway/atariconvnets/default.pol.json
+    # filt4sub4:
+    #     policy_cfg: $CTRL_ROOT/throwaway/atariconvnets/filt4sub4.pol.json
+    filt5sub4:
+        policy_cfg: $CTRL_ROOT/throwaway/atariconvnets/filt5sub4.pol.json
+    filt5sub4chan64:
+        policy_cfg: $CTRL_ROOT/throwaway/atariconvnets/filt5sub4chan64.pol.json
+    filt5sub4chan128:
+        policy_cfg: $CTRL_ROOT/throwaway/atariconvnets/filt5sub4chan128.pol.json
+    filt5sub4chan256:
+        policy_cfg: $CTRL_ROOT/throwaway/atariconvnets/filt5sub4chan256.pol.json
+    sergey16chan:
+        policy_cfg: $CTRL_ROOT/throwaway/atariconvnets/sergey16chan.pol.json
+    sergey32chan:
+        policy_cfg: $CTRL_ROOT/throwaway/atariconvnets/sergey32chan.pol.json
+
+    filt5sub4chan256x2:
+        policy_cfg: $CTRL_ROOT/throwaway/atariconvnets/filt5sub4chan256x2.pol.json
+    filt6sub4chan256:
+        policy_cfg: $CTRL_ROOT/throwaway/atariconvnets/filt6sub4chan256.pol.json
+
+    filt5sub4chan128sep:
+        policy_cfg: $CTRL_ROOT/throwaway/atariconvnets/filt5sub4chan128sep.pol.json
+    filt5sub4chan256sep:
+        policy_cfg: $CTRL_ROOT/throwaway/atariconvnets/filt5sub4chan256sep.pol.json
+    filt4sub42:
+        policy_cfg: $CTRL_ROOT/throwaway/atariconvnets/filt4sub42.pol.json
+    oneconvsep:
+        policy_cfg: $CTRL_ROOT/throwaway/atariconvnets/oneconvsep.pol.json
+    oneconv:
+        policy_cfg: $CTRL_ROOT/throwaway/atariconvnets/oneconv.pol.json        
+
+    oneconvsep128x2:
+        policy_cfg: $CTRL_ROOT/throwaway/atariconvnets/oneconvsep128x2.pol.json
+    oneconv32chansep128x2:
+        policy_cfg: $CTRL_ROOT/throwaway/atariconvnets/oneconv32chansep128x2.pol.json
+    oneconv32chands2sep128x2:
+        policy_cfg: $CTRL_ROOT/throwaway/atariconvnets/oneconv32chands2sep128x2.pol.json
+
+    filt4sub42a:
+        policy_cfg: $CTRL_ROOT/throwaway/atariconvnets/filt4sub42a.pol.json
+    oneconvsep256x64:
+        policy_cfg: $CTRL_ROOT/throwaway/atariconvnets/oneconvsep256x64.pol.json
+    filt4sub4:
+        policy_cfg: $CTRL_ROOT/throwaway/atariconvnets/filt4sub4.pol.json
+
+

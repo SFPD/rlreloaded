@@ -1,0 +1,32 @@
+{
+	"conv_layers" : [
+		{
+			"n_channels" : 16,
+			"filter_size" : [4,4],
+			"nonlinearity" : "tanh",
+			"pool_shape" : [1,1],
+			"subsample_shape" : [2,2]
+		},
+		{
+			"n_channels" : 16,
+			"filter_size" : [4,4],
+			"nonlinearity" : "tanh",
+			"pool_shape" : [1,1],
+			"subsample_shape" : [2,2]
+		}
+	],
+	"dense_layers" : [
+		{
+			"output_size" : 32,
+			"nonlinearity" : "tanh"
+		},
+		{
+			"output_size" : 32,
+			"nonlinearity" : "tanh"
+		},
+		{
+			"output_size" : 8,
+			"nonlinearity" : "none"
+		}
+	]
+}

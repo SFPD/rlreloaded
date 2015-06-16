@@ -1,0 +1,5 @@
+{
+	"nonlinearity" : "soft_rect",
+	"mem_size" : 8,
+	"hidden_layer_sizes" : [30]
+}

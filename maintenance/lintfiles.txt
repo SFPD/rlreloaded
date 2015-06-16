@@ -1,0 +1,4 @@
++ control4/*.py
++ control4/*/*.py
++ scripts/*/*.py
+- control4/misc/control_sphinx_ext.py

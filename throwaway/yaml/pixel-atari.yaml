@@ -1,0 +1,86 @@
+
+default_settings:
+    command: python $CTRL_ROOT/scripts/algs/run_spi.py
+    mdp_kws: "obs_mode=image"
+    par_mode: multiprocessing
+    policy_iter: 500
+    gamma: 1
+    fancy_damping: 1
+    agent_module: control4.agents.pixel_atari_agent
+
+    path_length: 20000
+    timesteps_per_batch: 200000
+
+    pol_cg_damping: 0.01
+    pol_cg_kl: 0.01
+    policy_cfg: throwaway/atariconvnets/oneconvsep64x3.pol.json
+
+    vf_cg_damping: 0.01
+    vf_cg_kl: 0.1
+    vf_cfg: throwaway/atariconvnets/oneconvsep64x3.pol.json
+
+    disable_test: 1
+
+n_runs: 1
+
+tests:
+    breakout:
+        mdp_name: atari:breakout
+    # pong:
+    #     mdp_name: atari:pong
+    # space_invaders:
+    #     mdp_name: atari:space_invaders
+
+cfgs:
+
+    # tmphack1-novf-gam0.98:
+    #     vf_opt_mode: "off"
+    #     gamma: 0.98
+    #     deepmind_cheat_mode: 1
+    #     mdp_kws: "frame_skip=4,obs_mode=image"
+
+    # ent0.01:
+    #     vf_opt_mode: "off"
+    #     gamma: 0.99
+    #     deepmind_cheat_mode: 1
+    #     pol_ent_coeff: 0.01
+    #     mdp_kws: "frame_skip=2,obs_mode=image"
+
+    # ent0.1:
+    #     vf_opt_mode: "off"
+    #     gamma: 0.99
+    #     deepmind_cheat_mode: 1
+    #     pol_ent_coeff: 0.1
+
+    # ent1.0:
+    #     vf_opt_mode: "off"
+    #     gamma: 0.99
+    #     deepmind_cheat_mode: 1
+    #     pol_ent_coeff: 1.0
+    # yesvfnoconv:
+    #     vf_opt_mode: separate
+    #     lam: 0.95
+    #     vf_cfg: $CTRL_ROOT/throwaway/json/cnn-for-atari-noconv.vf.json
+
+    # yesvf_lam0.96:
+    #     vf_opt_mode: separate
+    #     gamma: 1
+    #     lam: 0.96
+
+    # yesvf_lam0.96:
+    #     vf_opt_mode: separate
+    #     gamma: 1
+    #     lam: 0.96
+
+    # novf_cheat1.00:
+    #     deepmind_cheat_mode: 1
+    #     vf_opt_mode: "off"
+    #     gamma: 1.0
+    # novf_cheat0.99:
+    #     deepmind_cheat_mode: 1
+    #     vf_opt_mode: "off"
+    #     gamma: 0.99
+    # novf_cheat0.98:
+    #     deepmind_cheat_mode: 1
+    #     vf_opt_mode: "off"
+    #     gamma: 0.98

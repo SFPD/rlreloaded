@@ -1,0 +1,22 @@
+{
+    "cloud" : {
+        "provider" : "gce",
+
+        "gce" : {
+            "project" : "adp4control",        
+            "zone" : "us-central1-b",
+            "machine_type" : "n1-highcpu-16",
+            "image_name" : "janeth9",
+            "image_username" : "xyz",
+            "data_bucket" : "gs://rlreloaded_data",
+            "new_data_bucket" : "gs://rlreloaded_new_data"
+        },
+
+        "fake" : {
+        }
+    },
+    "experiments" : {
+        "branch_name" : "john-devel",
+        "max_instances" : 200
+    }
+}

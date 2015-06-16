@@ -1,0 +1,14 @@
+{
+	"conv_layers" : [
+	],
+	"dense_layers" : [
+		{
+			"output_size" : 32,
+			"nonlinearity" : "tanh"
+		},
+		{
+			"output_size" : 1,
+			"nonlinearity" : "none"
+		}
+	]
+}

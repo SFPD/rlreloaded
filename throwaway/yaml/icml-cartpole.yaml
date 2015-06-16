@@ -1,0 +1,118 @@
+default_settings:
+    command: python $CTRL_ROOT/scripts/algs/run_spi.py
+    mdp_name: cartpole_barto
+    policy_iter: 50
+    policy_cfg: maintenance/benchmarks_json/cartpole-linear.pol.json
+    agent_module: control4.agents.nn_reactive_agent
+    par_mode: multiprocessing
+    diag_traj_length: 1000
+
+pathstuff: &pathstuff
+    path_length: 1000
+    paths_per_batch: 256
+
+spstuff: &spstuff
+    disable_test: 1
+    pol_hess_subsample: 1
+scripts:
+
+    sp-default:
+        <<: *pathstuff
+        <<: *spstuff
+
+    sp-minlm:
+        <<: *pathstuff
+        <<: *spstuff
+        pol_cg_min_lm: 0.1
+
+    sp-minlm-nodamp:
+        <<: *pathstuff
+        <<: *spstuff
+        pol_cg_min_lm: 0.1
+        pol_cg_damping: 0
+
+    sp-fixed_lm3:
+        <<: *pathstuff
+        <<: *spstuff
+        pol_opt_alg: cg_fixed_lm
+        misc_kws: cg_fixed_lm_value=3.0
+
+    sp-fixed_lm1:
+        <<: *pathstuff
+        <<: *spstuff
+        pol_opt_alg: cg_fixed_lm
+        misc_kws: cg_fixed_lm_value=1.0
+
+    sp-fixed_lm0.3:
+        <<: *pathstuff
+        <<: *spstuff
+        pol_opt_alg: cg_fixed_lm
+        misc_kws: cg_fixed_lm_value=0.3
+
+    sp-fixed_lm0.1:
+        <<: *pathstuff
+        <<: *spstuff
+        pol_opt_alg: cg_fixed_lm
+        misc_kws: cg_fixed_lm_value=0.1
+
+    sp-fixed_lm0.03:
+        <<: *pathstuff
+        <<: *spstuff
+        pol_opt_alg: cg_fixed_lm
+        misc_kws: cg_fixed_lm_value=0.03
+
+    sp-fixed_lm0.01:
+        <<: *pathstuff
+        <<: *spstuff
+        pol_opt_alg: cg_fixed_lm
+        misc_kws: cg_fixed_lm_value=0.01
+
+    sp-empirical_fim:
+        <<: *pathstuff
+        <<: *spstuff
+        pol_opt_alg: empirical_fim
+
+    o-maxkl: &o-maxkl
+        command: THEANO_FLAGS=floatX=float64 python $CTRL_ROOT/scripts/algs/run_spi.py    
+        <<: *pathstuff
+        <<: *spstuff
+        par_mode: "off"
+        pol_opt_alg: maxkl
+        fancy_damping: 0    
+
+    o-bmaxkl0.03:
+        <<: *o-maxkl
+        pol_cg_kl: 0.03
+
+    o-amaxkl0.1:
+        <<: *o-maxkl
+        pol_cg_kl: 0.1
+
+    o-vines: &vines
+        command: python $CTRL_ROOT/scripts/algs/run_vines.py
+        num_vines: 32
+        vine_length: 1000
+        rollout_set_size: 200
+        branch_length: 100
+        action_samples: 4
+        gamma: .99
+        trials_per_action: 1
+        vine_is_method: self_normalized
+        pol_hess_subsample: 1
+
+    o-rwr:
+        <<: *pathstuff
+        command: python $CTRL_ROOT/scripts/algs/run_rwr.py
+
+    o-cem: &cem
+        <<: *pathstuff
+        initial_std: 0.1
+        cem_decay_time: 20
+        cem_extra_std: 0.1
+        command: python $CTRL_ROOT/scripts/algs/run_blackbox.py
+        alg: cem
+
+    o-cma:
+        <<: *cem
+        alg: cma
+

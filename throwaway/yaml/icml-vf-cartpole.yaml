@@ -1,0 +1,77 @@
+default_settings:
+    command: python $CTRL_ROOT/scripts/algs/run_spi.py
+    mdp_name: cartpole_barto
+    policy_iter: 50
+    policy_cfg: maintenance/benchmarks_json/cartpole-linear.pol.json
+    agent_module: control4.agents.nn_reactive_agent
+    par_mode: multiprocessing
+    diag_traj_length: 1000
+    pol_hess_subsample: 1
+    vf_hess_subsample: 1
+    path_length: 1000
+    paths_per_batch: 10
+    pol_cg_min_lm: 0.1
+    fancy_damping: 0
+    pol_cg_damping: 0.01
+    misc_kws: path_extension_factor=2
+
+vf_stuff: &vf_stuff
+    vf_opt_mode: separate
+    vf_cfg: throwaway/json/cartpole.vf.json
+    vf_cg_kl: 0.1
+    vf_cg_steps: 2
+    # vf_end_mode: bootstrap
+
+scripts:
+
+    novf: ""
+
+    yesvf-1-1:
+        <<: *vf_stuff
+        lam: 1
+    yesvf-0.99:
+        <<: *vf_stuff
+        lam: 0.99
+    yesvf-0.98:
+        <<: *vf_stuff
+        lam: 0.98
+    yesvf-0.96:
+        <<: *vf_stuff
+        lam: 0.96
+    yesvf-0.92:
+        <<: *vf_stuff
+        lam: 0.92
+    yesvf-0.84:
+        <<: *vf_stuff
+        lam: 0.84
+
+    # yesvf-0.99-vflam:
+    #     <<: *vf_stuff
+    #     lam: 0.99
+    #     vf_lam: 0.99
+    # yesvf-0.98-vflam:
+    #     <<: *vf_stuff
+    #     lam: 0.98
+    #     vf_lam: 0.98
+    # yesvf-0.96-vflam:
+    #     <<: *vf_stuff
+    #     lam: 0.96
+    #     vf_lam: 0.96
+    # yesvf-0.92-vflam:
+    #     <<: *vf_stuff
+    #     lam: 0.92
+    #     vf_lam: 0.92
+
+
+    # yesvf-0.84:
+    #     <<: *vf_stuff
+    #     lam: 0.84
+    yesvf-0.68:
+        <<: *vf_stuff
+        lam: 0.68
+    yesvf-0.36:
+        <<: *vf_stuff
+        lam: 0.36
+    yesvf-0.01:
+        <<: *vf_stuff
+        lam: 0.01

@@ -1,0 +1,6 @@
+add_subdirectory(mjc)
+add_subdirectory(Boost.NumPy)
+add_subdirectory(ale_0_4)
+if (HAVE_MJC2)
+	add_subdirectory(mjc2)
+endif(HAVE_MJC2)

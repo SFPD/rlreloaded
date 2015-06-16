@@ -1,0 +1,68 @@
+
+default_settings:
+    command: python $CTRL_ROOT/scripts/algs/run_spi.py
+    mdp_kws: "obs_mode=ram"
+    par_mode: multiprocessing
+    policy_iter: 1000
+    fancy_damping: 1
+    agent_module: control4.agents.ram_atari_agent
+
+    path_length: 99999
+    timesteps_per_batch: 200000
+
+    pol_cg_damping: 0.01
+    pol_cg_kl: 0.01
+    policy_cfg: throwaway/atariramnets/default.pol.json
+
+    save_policy_snapshots: 50
+
+    vf_cg_damping: 0.01
+    vf_cg_kl: 0.1
+    vf_cfg: throwaway/atariramnets/default.vf.json
+
+    disable_test: 1
+
+n_runs: 1
+
+tests:
+    breakout:
+        mdp_name: atari:breakout
+
+cfgs:
+
+
+    frameskip2+lam0.99:
+        mdp_kws: "obs_mode=ram,frame_skip=2"
+        vf_opt_mode: separate
+        deepmind_cheat_mode: 0
+        lam: 0.99
+        gam: 1.0
+        vf_lam: 1.0
+    frameskip2+lam0.98:
+        mdp_kws: "obs_mode=ram,frame_skip=2"
+        vf_opt_mode: separate
+        deepmind_cheat_mode: 0
+        lam: 0.98
+        gam: 1.0
+        vf_lam: 1.0
+    frameskip2+lam0.98-0.98:
+        mdp_kws: "obs_mode=ram,frame_skip=2"
+        vf_opt_mode: separate
+        deepmind_cheat_mode: 0
+        lam: 0.98
+        gam: 1.0
+        vf_lam: 0.98
+    frameskip2+lam0.98-0.96:
+        mdp_kws: "obs_mode=ram,frame_skip=2"
+        vf_opt_mode: separate
+        deepmind_cheat_mode: 0
+        lam: 0.98
+        gam: 1.0
+        vf_lam: 0.96
+    frameskip2+lam0.98-0.90:
+        mdp_kws: "obs_mode=ram,frame_skip=2"
+        vf_opt_mode: separate
+        deepmind_cheat_mode: 0
+        lam: 0.98
+        gam: 1.0
+        vf_lam: 0.90

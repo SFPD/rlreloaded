@@ -1,0 +1,4 @@
+{
+	"hidden_layer_sizes" : [64,64,32],
+	"nonlinearity" : "tanh"
+}

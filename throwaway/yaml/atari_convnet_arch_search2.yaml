@@ -1,0 +1,27 @@
+default_settings:
+    command: THEANO_FLAGS=openmp=True python $CTRL_ROOT/throwaway/atari_arch_search2.py
+    obs_mode: image
+    datafile: gs://rlreloaded_data/datasets/ram/breakout.h5
+    n_traj: 20
+    n_iter: 100
+    opt_method: cg
+
+scripts:
+    # default:
+    #     policy_cfg: throwaway/atariconvnets/default.pol.json
+    # filt4sub4:
+    #     policy_cfg: throwaway/atariconvnets/filt4sub4.pol.json
+    # filt4sub4-32+32:
+    #     policy_cfg: throwaway/atariconvnets/filt4sub4-32+32.pol.json
+    # color:
+    #     policy_cfg: throwaway/atariconvnets/filt4sub4.pol.json
+    #     use_color: 1
+    # oneconvsep:
+    #     policy_cfg: throwaway/atariconvnets/oneconvsep.pol.json
+    # oneconvsep128x2:
+    #     policy_cfg: throwaway/atariconvnets/oneconvsep128x2.pol.json
+    oneconvsep64x3:
+        policy_cfg: throwaway/atariconvnets/oneconvsep64x3.pol.json
+
+    # filt4sub4-32+32:
+    #     policy_cfg: throwaway/atariconvnets/filt4sub4-32+32.pol.json

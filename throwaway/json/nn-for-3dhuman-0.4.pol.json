@@ -1,0 +1,5 @@
+{
+	"nonlinearity" : "hard_rect",
+	"hidden_layer_sizes" : [50,50],
+	"initial_stdev" : 0.4
+}
